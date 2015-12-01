@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('MyApp', ["ngStorage"])
+        app.controller('MyController', function ($scope, $localStorage, $sessionStorage, $window) {
+            $scope.Save = function () {
+                $localStorage.LocalMessage = "LocalStorage: My name is Mudassar Khan.";
+                $sessionStorage.SessionMessage = "SessionStorage: My name is Mudassar Khan.";
+            }
+            $scope.Get = function () {
+                $window.alert($localStorage.LocalMessage + "\n" + $sessionStorage.SessionMessage);
+            }
+        });
+    </script>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <input type="button" value="Save" ng-click="Save()" />
+        <input type="button" value="Get" ng-click="Get()" />
+    </div>
+</body>
+</html>
+

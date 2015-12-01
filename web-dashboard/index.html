@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Web Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="main.css" rel="stylesheet" type="text/css">
+	<link href="favicon.ico" rel="Shortcut Icon">
+	<script src="../angular_1.4.8.min.js"></script>
+	<script src="../ngStorage_0.3.10.min.js"></script>
+</head>
+<body>
+	<div id="mainContainer" class="container" 
+			ng-app="myApp"
+			ng-controller="myController">
+
+		<div id="editSectionSmall" class ="editSectionSmall"
+				ng-hide="viewEditURLs">
+			<span class="pad-left">
+				<a href="" 
+					ng-click="viewEditURLs=true;"
+					class="white">
+					View / Edit URLs &amp; Settings
+				</a>
+			</span>
+			<span class="pad-left">
+				There are currently {{$storage.urls.length}} URLs defined.
+			</span>
+		</div>
+
+		<div id="urlsRendering">
+		</div>
+		
+		<div id="viewEditURLs" ng-show="viewEditURLs">
+			
+			<button ng-click="viewEditURLs=false;">
+				I'm Done. Take me back!
+			</button>
+			
+			<div class="vertical-space"></div>
+
+			<form name="newURLForm" novalidate>
+				<input type="url" name="url"
+						placeholder="URL" ng-model="newURL" required></input>
+				<span class="red" ng-show="newURLForm.url.$invalid">
+					Please enter a valid URL.
+				</span>
+				<button ng-click="addURL(); newURL = null;" 
+						ng-disabled="newURLForm.url.$invalid">
+					Add URL
+				</button>
+				
+				<div class="vertical-space"></div>
+
+				<div id="listOfURLs">
+					<div ng-repeat="url in $storage.urls track by $index"
+							class="urlItem">
+						Next URL is <span class="blue">{{url.xurl}}</span>
+						<button ng-click="removeURL($index);">Remove this URL</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+	<script src="app.js"></script>
+	<script src="controller.js"></script>
+</body>
+</html>
