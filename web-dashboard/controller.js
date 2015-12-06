@@ -32,7 +32,13 @@ app.controller("myController", function($scope, $localStorage) {
 	$scope.setCoordinateOrigin = function(x, y){
 			$scope.pointOrigin = new Point(x, y);
 			
-			console.log("Coordinate Origin : (" + x + "," + y + ")");
+			console.log("Point Origin : " + $scope.pointOrigin.toString());
+	}
+	$scope.setCoordinateArrival = function(x, y){
+			$scope.pointArrival = new Point(x, y);			
+			console.log("Point Arrival : " + $scope.pointArrival.toString());
+
+			$scope.coordinate = new Coordinates($scope.pointOrigin, $scope.pointArrival);
 	}
 
 });

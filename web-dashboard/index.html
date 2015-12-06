@@ -55,7 +55,8 @@
 
 						<div class="locationCell"
 										ng-repeat="j in getNumberOfCols() track by $index"
-										ng-mousedown="setCoordinateOrigin($parent.$index, $index);">
+										ng-mousedown="setCoordinateOrigin($parent.$index, $index);"
+										ng-mouseup="setCoordinateArrival($parent.$index, $index);">
 							
 							
 						</div>							
@@ -80,6 +81,9 @@
 						<button ng-click="removeURL($index);">Remove this URL</button>
 					</div>
 				</div>
+				
+				Departure from
+
 			</form>
 		</div>
 
