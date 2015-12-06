@@ -39,11 +39,33 @@
 			<div class="vertical-space"></div>
 
 			<form name="newURLForm" novalidate>
+				STEP 1. Type / Copy-Paste a new URL <br/>
 				<input type="url" name="url"
 						placeholder="URL" ng-model="newURL" required></input>
 				<span class="red" ng-show="newURLForm.url.$invalid">
 					Please enter a valid URL.
 				</span>
+
+				<div class="vertical-space"></div>
+
+				STEP 2. Specify Where the URL will be displayed	
+				<div id="chooseLocation">
+					<div class="locationRow"
+									ng-repeat="i in getNumberOfRows() track by $index">
+
+						<div class="locationCell"
+										ng-repeat="j in getNumberOfCols() track by $index"
+										ng-mousedown="setCoordinateOrigin($parent.$index, $index);">
+							
+							
+						</div>							
+					</div>
+				</div>
+
+				<div class="vertical-space"></div>
+				
+				<br/>
+				STEP 3. SAVE<br/>
 				<button ng-click="addURL(); newURL = null;" 
 						ng-disabled="newURLForm.url.$invalid">
 					Add URL

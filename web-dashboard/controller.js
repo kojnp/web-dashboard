@@ -19,5 +19,21 @@ app.controller("myController", function($scope, $localStorage) {
 	$scope.removeURL = function($index){
 		$scope.$storage.urls.splice($index, 1);
 	}
+
+	$scope.numLocationRows = 10;
+	$scope.numLocationCols = 18; // 1366 x 768 resolution -> w = 1.8 x h
+	$scope.getNumberOfRows = function() {
+	    return new Array($scope.numLocationRows);
+	}
+	$scope.getNumberOfCols = function() {
+	    return new Array($scope.numLocationCols);
+	}
+
+	$scope.setCoordinateOrigin = function(x, y){
+			$scope.pointOrigin = new Point(x, y);
+			
+			console.log("Coordinate Origin : (" + x + "," + y + ")");
+	}
+
 });
 

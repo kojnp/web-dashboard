@@ -22,3 +22,14 @@
 .vertical-space{
 	padding-top: 10px;
 }
+.locationRow{
+	width: 576px; /* = numCells * (cellWidth + (2 * borderWidth) ) */
+}
+.locationCell{
+	float: left;
+	width: 30px;
+	height: 30px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
