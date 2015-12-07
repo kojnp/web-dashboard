@@ -12,8 +12,18 @@ app.controller("myController", function($scope, $localStorage) {
 		$scope.$storage.urls = [];
 	}
 
+	//delete $scope.$storage.LocalMessage;
+
+	$scope.colors = ['gray', 'yellow', 'red', 'blue', 'pink', 
+									 'orange', 'brown', 'cyan', 'magenta'];
+
 	$scope.addURL = function(){
-		$scope.$storage.urls.push({xurl : $scope.newURL});
+		$scope.$storage.urls.push(
+					{
+							xurl : $scope.newURL,
+							coordinates : angular.toJson($scope.coordinates)
+					}
+		);
 	}
 
 	$scope.removeURL = function($index){
@@ -30,15 +40,14 @@ app.controller("myController", function($scope, $localStorage) {
 	}
 
 	$scope.setCoordinateOrigin = function(x, y){
-			$scope.pointOrigin = new Point(x, y);
-			
+			$scope.pointOrigin = new Point(x, y);			
 			console.log("Point Origin : " + $scope.pointOrigin.toString());
 	}
 	$scope.setCoordinateArrival = function(x, y){
 			$scope.pointArrival = new Point(x, y);			
 			console.log("Point Arrival : " + $scope.pointArrival.toString());
 
-			$scope.coordinate = new Coordinates($scope.pointOrigin, $scope.pointArrival);
+			$scope.coordinates = new Coordinates($scope.pointOrigin, $scope.pointArrival);
 	}
 
 });

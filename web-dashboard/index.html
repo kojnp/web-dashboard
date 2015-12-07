@@ -77,12 +77,13 @@
 				<div id="listOfURLs">
 					<div ng-repeat="url in $storage.urls track by $index"
 							class="urlItem">
-						Next URL is <span class="blue">{{url.xurl}}</span>
+						Next URL is <span class="blue">{{url.xurl }}</span>
+						<br/>With Coordinates {{ (url.coordinates).toString(); }}
+						upp left: {{ (url.coordinates).pointUpperLeft; }}
 						<button ng-click="removeURL($index);">Remove this URL</button>
 					</div>
 				</div>
 				
-				Departure from
 
 			</form>
 		</div>
