@@ -75,11 +75,11 @@
 				<div class="vertical-space"></div>
 
 				<div id="listOfURLs">
-					<div ng-repeat="url in $storage.urls track by $index"
+					<div ng-repeat="url in localURLs track by $index"
 							class="urlItem">
 						Next URL is <span class="blue">{{url.xurl }}</span>
-						<br/>With Coordinates {{ (url.coordinates).toString(); }}
-						upp left: {{ (url.coordinates).pointUpperLeft; }}
+						<br/>With Coordinates {{ url.coordinates }}
+						<br/>pll.x {{ url.coordinates.pointUpperLeft.x }}
 						<button ng-click="removeURL($index);">Remove this URL</button>
 					</div>
 				</div>

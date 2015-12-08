@@ -8,6 +8,17 @@ function Point(x, y){
 	}
 }
 
+function createPointFromObject(obj){
+	return new Point(obj.x, obj.y);
+}
+
+function createCoordinatesFromObject(obj){
+	return new Coordinates(
+			createPointFromObject(obj.pointUpperLeft), 
+			createPointFromObject(obj.pointLowerRight)
+	);
+}
+
 function Coordinates(pointOrigin, pointArrival){
 	
 	if ((pointOrigin.x <= pointArrival.x) && 
