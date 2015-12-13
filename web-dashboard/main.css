@@ -1,35 +1,104 @@
 .container {
+    width: 1300px;
+    height: 740px;
 }
+
+.url-rendering-container{
+    float: left;
+    width: 100%;
+    height: 95%;
+}
+
+.renderingLoopRow{
+    float: left;
+}
+
+.renderingLoopCell{
+    float: left;
+}
+
+.whitespace-cell{
+    float: left;
+    width: 72px;
+    height: 72px;
+}
+
+.iframe{
+     float: left;
+     height: 100%; 
+     width: 100%;
+}
+
 .editSectionSmall{	
-	background:black;
-	color:white;
+    background:black;
+    color:white;
+    width: 100%;
+    height: 20px;    
 }
 .pad-left{
-	padding-left: 10px;
+    padding-left: 10px;
 }
-.white{
-	color:white;
-}
-.blue{
-	color:blue;
-}
-.red{
-	color:red;
-}
+
 .urlItem{
-	padding-top: 5px;
+    padding-top: 5px;
 }
 .vertical-space{
-	padding-top: 10px;
+    padding-top: 10px;
 }
 .locationRow{
-	width: 576px; /* = numCells * (cellWidth + (2 * borderWidth) ) */
+    width: 576px; /* = numCells * (cellWidth + (2 * borderWidth) ) */
 }
 .locationCell{
-	float: left;
-	width: 30px;
-	height: 30px;
-	border-style: solid;
-	border-color: black;
-	border-width: 1px;
+    float: left;
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.white{
+    color:white;
+}
+.blue{
+    color:blue;
+}
+.red{
+    color:red;
+}
+
+
+        
+.bg-gray{
+    background-color: gray;
+}
+.bg-red{
+    background-color: red;
+}
+.bg-blue{
+    background-color: blue;
+}
+.bg-pink{
+    background-color: pink;
+}
+.bg-orange{
+    background-color: orange;
+}
+.bg-brown{
+    background-color: brown;
+}
+.bg-cyan{
+    background-color: cyan;
+}
+.bg-magenta{
+    background-color: magenta;
+}
+.bg-yellow{
+    background-color: yellow;
+}
+.bg-white{
+    background-color: white;
+}
+.bg-green{
+    background-color: green;
 }

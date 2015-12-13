@@ -1,5 +1,6 @@
 var app = angular.module("myApp", ["ngStorage"]);
 
+
 function Point(x, y){
 	this.x = x;
 	this.y = y;
@@ -60,7 +61,7 @@ function Coordinates(pointOrigin, pointArrival){
 			" pointLowerRight: " + this.pointLowerRight.toString();
 	}
 
-	console.log("Points for Coordinate: " + this.toString());
+	//console.log("Points for Coordinate: " + this.toString());
 
 }
 

@@ -27,7 +27,29 @@
 			</span>
 		</div>
 
-		<div id="urlsRendering">
+		<div id="urlsRendering" ng-if="!viewEditURLs" class="url-rendering-container">
+                    
+                    <span ng-repeat="i in getNumberOfRows() track by $index" class="renderingLoopRow">
+
+                        <span ng-repeat="j in getNumberOfCols() track by $index" class="renderingLoopCell">
+                                
+                            <div class="whitespace-cell" 
+                                ng-if="isRenderWhitespaceCell($parent.$index, $index)">
+                                {{"(" + $parent.$index + "," + $index + ")"}}
+                            </div>
+                            
+                            <div 
+                                 ng-if="!isRenderWhitespaceCell($parent.$index, $index) && shouldRenderIFrame()">
+                                <!-- {{"(" + $parent.$index + "," + $index + ")"}} -->
+                                <iframe src="{{urlForCell}}" class="iframe"
+                                        ng-style="getURLBoxStyle()" >
+                                    
+                                </iframe>
+                                
+                            </div>
+
+                        </span>							
+                    </span>
 		</div>
 		
 		<div id="viewEditURLs" ng-show="viewEditURLs">
@@ -51,15 +73,16 @@
 				STEP 2. Specify Where the URL will be displayed	
 				<div id="chooseLocation">
 					<div class="locationRow"
-									ng-repeat="i in getNumberOfRows() track by $index">
+                                            ng-repeat="i in getNumberOfRows() track by $index">
 
-						<div class="locationCell"
-										ng-repeat="j in getNumberOfCols() track by $index"
-										ng-mousedown="setCoordinateOrigin($parent.$index, $index);"
-										ng-mouseup="setCoordinateArrival($parent.$index, $index);">
+                                            <div class="locationCell"
+                                                ng-repeat="j in getNumberOfCols() track by $index"
+                                                ng-mousedown="setCoordinateOrigin($parent.$index, $index);"
+                                                ng-mouseup="setCoordinateArrival($parent.$index, $index);"
+                                                ng-class="getclassName($parent.$index, $index)">
 							
 							
-						</div>							
+                                            </div>							
 					</div>
 				</div>
 
