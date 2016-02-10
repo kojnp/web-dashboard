@@ -1,4 +1,4 @@
-app.controller("myController", function($scope, $localStorage, $sce) {
+app.controller("myController", function($scope, $localStorage, $sce, PointService, Point, Coordinates) {
     
 	$scope.$storage = $localStorage;
 
@@ -67,7 +67,7 @@ app.controller("myController", function($scope, $localStorage, $sce) {
             $scope.localURLs.push(
                     {
                             xurl : $scope.$storage.urls[i].xurl, 
-                            coordinates : createCoordinatesFromObject(
+                            coordinates : PointService.createCoordinatesFromObject(
                                             angular.fromJson($scope.$storage.urls[i].coordinates))
                     }
             );
@@ -220,14 +220,14 @@ app.controller("myController", function($scope, $localStorage, $sce) {
                 console.log("width="+width+", height="+height);
                 
                 return {'width' : width, 
-                        'height' : height, 
-                        'float' : 'left'};
+                        'height' : height};
                 // OR MAYBE return obj ?
             }
             //console.log("empty style");
-            return {'width' : 30, 
-                        'height' : 30, 
-                        'float' : 'left'};
+            return {'width' : 72, 
+                        'height' : 72}//, 
+                                /*'float' : 'left'*/
+                            //'display' : 'inline'};
         };
         
         $scope.urlForCell = '';

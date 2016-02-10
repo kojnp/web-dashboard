@@ -1,0 +1,4 @@
+1. controller / view diferit ptr damin si dahsboard (vezi ui-router)
+2	. pentru comunicare, foloseste servicii angular (clase singleton)
+3. vezi diferenta intre factory si service
+4. citeste despre directive

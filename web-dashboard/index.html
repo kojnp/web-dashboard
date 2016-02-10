@@ -7,9 +7,12 @@
 	<link href="favicon.ico" rel="Shortcut Icon">
 	<script src="../angular_1.4.8.min.js"></script>
 	<script src="../ngStorage_0.3.10.min.js"></script>
+        <script src="../jquery-2.1.4.min.js"></script>
+        <script src="../freewall.js"></script>
+        <script src="../masonry.pkgd.min.js"></script>        
 </head>
 <body>
-	<div id="mainContainer" class="container" 
+	<div id="mainContainer" class="container ng-cloak" 
 			ng-app="myApp"
 			ng-controller="myController">
 
@@ -29,27 +32,26 @@
 
 		<div id="urlsRendering" ng-if="!viewEditURLs" class="url-rendering-container">
                     
-                    <span ng-repeat="i in getNumberOfRows() track by $index" class="renderingLoopRow">
-
-                        <span ng-repeat="j in getNumberOfCols() track by $index" class="renderingLoopCell">
+                    <div ng-repeat="row in getNumberOfRows() track by $index" class="renderingLoopRow">
+                        
+                        <div ng-repeat="col in getNumberOfCols() track by $index" class="renderingLoopCell">
                                 
-                            <div class="whitespace-cell" 
+                            <div class="whitespace-cell item" 
                                 ng-if="isRenderWhitespaceCell($parent.$index, $index)">
-                                {{"(" + $parent.$index + "," + $index + ")"}}
+                                {{"(" + $parent.$parent.$index + "," + $parent.$index + ")"}}
                             </div>
                             
                             <div 
-                                 ng-if="!isRenderWhitespaceCell($parent.$index, $index) && shouldRenderIFrame()">
-                                <!-- {{"(" + $parent.$index + "," + $index + ")"}} -->
-                                <iframe src="{{urlForCell}}" class="iframe"
-                                        ng-style="getURLBoxStyle()" >
+                                ng-if="!isRenderWhitespaceCell($parent.$index, $index) && shouldRenderIFrame()" 
+                                ng-style="getURLBoxStyle()" class="iframe item">
+                                <!-- {{"(" + $parent.$parent.$index + "," + $parent.$index + ")"}} -->
+                                <iframe ng-src="{{urlForCell}}" class="iframe" >
                                     
                                 </iframe>
-                                
                             </div>
 
-                        </span>							
-                    </span>
+                        </div>							
+                    </div>
 		</div>
 		
 		<div id="viewEditURLs" ng-show="viewEditURLs">
@@ -115,5 +117,22 @@
 
 	<script src="app.js"></script>
 	<script src="controller.js"></script>
+        
+        <script>
+            
+            /*
+            $(function(){
+                var wall = new freewall("#urlsRendering");
+                wall.fitWidth();
+            });
+            */
+           
+            /*
+            $('.url-rendering-container').masonry({
+                // options
+                itemSelector: '.item'
+            });
+            */
+        </script>
 </body>
 </html>

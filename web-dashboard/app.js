@@ -1,26 +1,13 @@
 var app = angular.module("myApp", ["ngStorage"]);
 
 
-function Point(x, y){
-	this.x = x;
-	this.y = y;
-	this.toString = function(){
-		return "(" + this.x + "," + this.y + ")";
-	}
-}
 
-function createPointFromObject(obj){
-	return new Point(obj.x, obj.y);
-}
 
-function createCoordinatesFromObject(obj){
-	return new Coordinates(
-			createPointFromObject(obj.pointUpperLeft), 
-			createPointFromObject(obj.pointLowerRight)
-	);
-}
 
-function Coordinates(pointOrigin, pointArrival){
+
+
+app.factory('Coordinates', function(Point){	
+	return function (pointOrigin, pointArrival){
 	
 	if ((pointOrigin.x <= pointArrival.x) && 
 			(pointOrigin.y <= pointArrival.y)){
@@ -64,13 +51,31 @@ function Coordinates(pointOrigin, pointArrival){
 	//console.log("Points for Coordinate: " + this.toString());
 
 }
-
-/*
-app.factory('Point', function(x, y){	
-	return new Point(x, y);
 });
 
-app.factory('URLCoordinates', function(pointOrigin, pointArrival){	
-	return new Coordinates(pointOrigin, pointArrival);
+
+    app.service('PointService', function(Coordinates, Point) {
+    return {
+        createPointFromObject: function (obj){
+            return new Point(obj.x, obj.y);
+        },
+        createCoordinatesFromObject: function(obj){
+	return new Coordinates(
+			this.createPointFromObject(obj.pointUpperLeft), 
+			this.createPointFromObject(obj.pointLowerRight)
+	);
+}
+    };
 });
-*/
+
+app.factory('Point', function(){	
+	return function(x, y){
+            this.x = x;
+            this.y = y;
+            this.toString = function(){
+                    return "(" + this.x + "," + this.y + ")";
+            }
+        }
+});
+
+
